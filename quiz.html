@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Know Me Quiz</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .question { margin-bottom: 20px; }
+        .question h3 { color: #d63384; }
+        .options label { display: block; margin: 5px 0; cursor: pointer; }
+        #result { margin-top: 30px; font-size: 1.5em; color: #d63384; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🧠 How Well Do You Know Me?</h2>
+        <form id="quizForm">
+            <div class="question">
+                <h3>1. What’s my favorite food?</h3>
+                <div class="options">
+                    <label><input type="radio" name="q1" value="Maggie"> Maggie</label>
+                    <label><input type="radio" name="q1" value="Pizza"> Pizza</label>
+                    <label><input type="radio" name="q1" value="Burger"> Burger</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>2. What’s my favorite color?</h3>
+                <div class="options">
+                    <label><input type="radio" name="q2" value="Black, White, Red"> Black, White, Red</label>
+                    <label><input type="radio" name="q2" value="Blue"> Blue</label>
+                    <label><input type="radio" name="q2" value="Pink"> Pink</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>3. What’s my favorite game?</h3>
+                <div class="options">
+                    <label><input type="radio" name="q3" value="Fortnite"> Fortnite</label>
+                    <label><input type="radio" name="q3" value="Minecraft"> Minecraft</label>
+                    <label><input type="radio" name="q3" value="GTA"> GTA</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>4. Who is my favorite person online?</h3>
+                <div class="options">
+                    <label><input type="radio" name="q4" value="You"> You</label>
+                    <label><input type="radio" name="q4" value="No one"> No one</label>
+                    <label><input type="radio" name="q4" value="Myself"> Myself</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>5. What’s my favorite time of the day?</h3>
+                <div class="options">
+                    <label><input type="radio" name="q5" value="Night"> Night</label>
+                    <label><input type="radio" name="q5" value="Morning"> Morning</label>
+                    <label><input type="radio" name="q5" value="Afternoon"> Afternoon</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>6. What’s something I can do for hours?</h3>
+                <div class="options">
+                    <label><input type="radio" name="q6" value="Talk to you"> Talk to you</label>
+                    <label><input type="radio" name="q6" value="Gaming"> Gaming</label>
+                    <label><input type="radio" name="q6" value="Sleeping"> Sleeping</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>7. What’s my biggest dream?</h3>
+                <div class="options">
+                    <label><input type="radio" name="q7" value="Be a musician"> Be a musician</label>
+                    <label><input type="radio" name="q7" value="Be a gamer"> Be a gamer</label>
+                    <label><input type="radio" name="q7" value="Travel the world"> Travel the world</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>8. What makes me laugh every time?</h3>
+                <div class="options">
+                    <label><input type="radio" name="q8" value="When I talk to you"> When I talk to you</label>
+                    <label><input type="radio" name="q8" value="Memes"> Memes</label>
+                    <label><input type="radio" name="q8" value="Random things"> Random things</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>9. What’s my go-to lazy day activity?</h3>
+                <div class="options">
+                    <label><input type="radio" name="q9" value="Nothing"> Nothing</label>
+                    <label><input type="radio" name="q9" value="Laying down"> Laying down</label>
+                    <label><input type="radio" name="q9" value="Listening to music"> Listening to music</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>10. If I had a superpower, what would it be?</h3>
+                <div class="options">
+                    <label><input type="radio" name="q10" value="Love everyone"> Love everyone</label>
+                    <label><input type="radio" name="q10" value="Time travel"> Time travel</label>
+                    <label><input type="radio" name="q10" value="Fly"> Fly</label>
+                </div>
+            </div>
+
+            <button type="button" onclick="checkAnswers()">Submit</button>
+            <div id="result"></div>
+        </form>
+    </div>
+
+    <script>
+        const answers = [
+            "Maggie",
+            "Black, White, Red",
+            "Fortnite",
+            "You",
+            "Night",
+            "Talk to you",
+            "Be a musician",
+            "When I talk to you",
+            "Nothing",
+            "Love everyone"
+        ];
+
+        function checkAnswers() {
+            let score = 0;
+            for (let i = 1; i <= 10; i++) {
+                let q = document.querySelector('input[name="q' + i + '"]:checked');
+                if (q && q.value === answers[i - 1]) {
+                    score++;
+                }
+            }
+
+            let message = "";
+            if (score === 10) message = "🎉 You literally know everything! BFF level: MAX 💯";
+            else if (score >= 7) message = "🔥 You know me pretty well 😎 Not bad at all!";
+            else if (score >= 4) message = "😅 Hmm... mid-level bestie energy";
+            else message = "💀 Do we even talk? Try again pls";
+
+            document.getElementById("result").textContent = `Your Score: ${score}/10 — ${message}`;
+        }
+    </script>
+</body>
+</html>
